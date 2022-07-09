@@ -1,0 +1,29 @@
+.sonic{
+	position: absolute;
+	width: 100px;
+	bottom: 20px;
+	left: 40px;
+	animation: sonicRunning 250ms linear infinite;
+}
+
+.jumpFisi{
+	animation: sonicFisiJum 1s ease-out;
+}
+
+.jumpAnim{
+	content: url("../graphycs/sonic/sonic_j.gif");
+}
+
+@keyframes sonicRunning{
+	0% {content: url("../graphycs/sonic/sonic_r0.png");}
+	30% {content: url("../graphycs/sonic/sonic_r1.png");}
+	60% {content: url("../graphycs/sonic/sonic_r2.png");}
+	100% {content: url("../graphycs/sonic/sonic_r3.png");}
+}
+
+@keyframes sonicFisiJum{
+	0% {width: 100px;}
+	10% {height: 100px; width: 70px; bottom: 150px; left: 60px;}
+	90% {width: 90px; bottom: 120px; left: 60px;}
+	100% {width: 100px; bottom: 20px; left: 40px;}
+}

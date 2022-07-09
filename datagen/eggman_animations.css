@@ -1,0 +1,10 @@
+img#spikes{
+	position: absolute;
+	bottom: 20px;
+	animation: spikesAnimation linear 4s infinite;
+}
+
+@keyframes spikesAnimation{
+	from {right: -80px;} 
+	to {right: 100%;}
+}
