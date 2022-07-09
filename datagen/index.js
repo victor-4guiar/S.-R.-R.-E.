@@ -1,4 +1,6 @@
 let yatoco = {intro: false, title: false, level: false};
+let jump = new Audio('sounds/sfx/jump.ogg');
+let ostLe = new Audio('sounds/ost/gameover.ogg');
 
 let sonic = {
 	sprite: 'graphycs/sonic/sonic_r0.png',
@@ -37,7 +39,7 @@ function titleScreen(){
 		let messageTitle = document.createElement('h2');
 		messageTitle.style.color = 'yellow';
 		messageTitle.style.textAlign = 'center';
-		messageTitle.innerHTML = 'Pess any key to play!';
+		messageTitle.innerHTML = 'Press any key to play!';
 		messageTitle.style.position = 'absolute';
 		messageTitle.style.margin = '100px 100px 50px 250px';
 		gameWindow.appendChild(messageTitle);
@@ -52,8 +54,8 @@ function titleScreen(){
 };
 
 function gamePlay(){
+	let pod = true;
 	let eleSo = document.createElement('img');
-	let jump = new Audio('sounds/sfx/jump.ogg');
 	eleSo.src = sonic.sprite;
 	eleSo.setAttribute('class', 'sonic');
 	eleSo.style.imageRendering = 'pixelated';
@@ -70,19 +72,17 @@ function gamePlay(){
 		gameWindow.appendChild(eleSo);
 	}
 	
-	document.addEventListener('keydown', function(event){
-		if (controle == true){
-			controle = false;
-			if(event.keyCode == 65){
-				jump.play(); /* Problema para resolver (Audio ativado mais de uma vez gerando um som não agradável.)*/
+	document.addEventListener('keydown', function(verifi){
+		if (verifi.keyCode == 65){
+			if (controle == true){
+				controle = false;
+				jump.play();
 				eleSo.classList.add('jumpFisi');
 				eleSo.classList.add('jumpAnim');
 				setTimeout(()=>{
 					eleSo.classList.remove('jumpFisi');
 					eleSo.classList.remove('jumpAisi');
 					controle = true;
-					jump.pause();
-					jump.currentTime = 0;
 				}, 1 * 1000);
 			};
 		};
