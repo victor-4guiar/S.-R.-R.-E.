@@ -1,0 +1,85 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-color: #718DA5;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+header{
+	background-color: #282828;
+	color: white;
+	padding: 15px;
+	text-align: center;
+}
+
+div#gameWindow{
+	background-color: #282828;
+	margin: 40px auto 10px auto;
+	max-width: 750px;
+	min-height: 400px;
+	color: white;
+	border-radius: 10px;
+}
+
+div#gameFlash{
+	background-color: black;
+	min-height: 400px;
+	border-radius: 10px;
+}
+
+img#logoIm{
+	width: 450px;
+	text-align: center;
+	margin: 20%;
+	opacity: 0%;
+}
+
+footer{
+	text-align: center;
+	background-color: #282828;
+	padding: 4px;
+	position: absolute;
+	bottom: 0;
+	width: 99.4%;
+}
+
+footer p{
+	font-size: 1.1em;
+	color: white;
+}
+
+footer a{
+	color: white;
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+.whiteUp{
+	animation: adicionarWhite ease-out;
+	animation-duration: 8s;
+}
+
+.whiteDown{
+	animation: tirarWhite ease-out;
+	animation-duration: 8s;
+}
+
+@keyframes adicionarWhite{
+	0% {opacity: 0%;}
+	30% {opacity: 100%;}
+	70% {opacity: 100%;}
+	100% {opacity: 0%;}
+}
+
+@keyframes tirarWhite{
+	0% {background-color: black;}
+	20% {background-color: white;}
+	70% {background-color: white;}
+	100% {background-color: 0%;}
+}
