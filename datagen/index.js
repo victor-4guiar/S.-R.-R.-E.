@@ -1,8 +1,4 @@
-let yatoco = {intro: false, title: false, level: false}; /* As variáveis do absoluto escopo novamente são declaradas aqui pois há conflito declarando dentro das funções. */
-let jump = new Audio('sounds/sfx/jump.ogg');
-let ostLe = new Audio('sounds/ost/gameover.ogg');
-let controle = true;
-
+let yatoco = {intro: false, title: false, level: false, over: false};
 let sonic = {
 	sprite: 'graphycs/sonic/sonic_r0.png',
 	runFrames: 4,
@@ -55,35 +51,73 @@ function titleScreen(){
 };
 
 function gamePlay(){
-	let eleSo = document.createElement('img');
-	eleSo.src = sonic.sprite;
-	eleSo.setAttribute('class', 'sonic');
-	eleSo.style.imageRendering = 'pixelated';
-	
 	if (yatoco.level == false){
-		yatoco.level = true;
+		llave = false;
+		let jump = new Audio('sounds/sfx/jump.ogg');
+		let ostLe = new Audio('sounds/ost/gameover.ogg');
+		let controle = true;
+		let eleSo = document.createElement('img');
+		
+		eleSo.src = sonic.sprite;
+		eleSo.setAttribute('class', 'sonic');
+		eleSo.style.imageRendering = 'pixelated';
+		
 		gameWindow.style.backgroundColor = 'lightblue';
 		let spikes = document.createElement('img');
-		spikes.setAttribute('id', 'spikes');
-		spikes.src = 'graphycs/spikes.png';
-		
+		spikes.setAttribute('id', 'spike');
+		spikes.src = 'graphycs/spike.png';
+		spikes.style.imageRendering = 'pixelated';
+			
 		gameWindow.appendChild(spikes);
 		gameWindow.appendChild(eleSo);
-	}
-	
-	document.addEventListener('keydown', function(verifi){
-		if (verifi.keyCode == 65){
-			if (controle == true){
-				controle = false;
-				jump.play();
-				eleSo.classList.add('jumpFisi');
-				eleSo.classList.add('jumpAnim');
-				setTimeout(()=>{
+		yatoco.level = true;
+		
+		if (llave == false){
+			document.addEventListener('keydown', function(verifi){
+				if (verifi.keyCode == 65){
+					if (controle == true){
+						controle = false;
+						jump.play();
+						eleSo.classList.add('jumpFisi');
+						eleSo.classList.add('jumpAnim');
+						setTimeout(()=>{
+							eleSo.classList.remove('jumpFisi');
+							eleSo.classList.remove('jumpAnim');
+							controle = true;
+						}, 1 * 1500);
+					};
+				};
+			});
+			
+			const loop = setInterval(()=>{
+				const spikePosition = spike.offsetLeft;
+				const sonicPosition = +window.getComputedStyle(eleSo).bottom.replace('px', '');
+				if (spikePosition <= 120 && spikePosition > 0 && sonicPosition < 90){
+					spike.style.animation = 'none';
+					spike.style.left = `${spikePosition}px`;
+								
 					eleSo.classList.remove('jumpFisi');
-					eleSo.classList.remove('jumpAisi');
-					controle = true;
-				}, 1 * 1000);
-			};
+					eleSo.classList.remove('jumpAnim');
+					eleSo.classList.add('die');
+					eleSo.style.bottom = `${sonicPosition}px`;
+					llave = true;
+					controle = false;
+					gameOver();
+				};
+			}, 10);
 		};
-	});
+	};
+};
+
+function gameOver(){
+	if(yatoco.over == false){
+		let gameO = new Audio('sounds/ost/gameover.ogg');
+		let dano = new Audio('sounds/sfx/die.ogg');
+		dano.play();
+		yatoco.over = true;
+		setTimeout(()=>{
+			gameO.play();
+			dano.pause();
+		}, 3 * 1000);
+	};
 };

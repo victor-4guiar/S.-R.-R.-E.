@@ -1,17 +1,28 @@
 .sonic{
 	position: absolute;
 	width: 100px;
-	bottom: 20px;
+	bottom: 40px;
 	left: 40px;
 	animation: sonicRunning 200ms linear infinite;
 }
 
+.die{
+	animation: dieSonic 1500ms ease-out;
+	width: 90px;
+}
+
 .jumpFisi{
-	animation: sonicFisiJum 1s ease-out;
+	animation: sonicFisiJum 1500ms;
 }
 
 .jumpAnim{
 	content: url("../graphycs/sonic/sonic_j.gif");
+}
+
+@keyframes dieSonic{
+	0% {content: url("../graphycs/sonic/sonic_d.png"); transform: rotate(0deg); bottom: 90px;}
+	20% {content: url("../graphycs/sonic/sonic_d.png"); bottom: 120px;}
+	100% {width: 200px; content: url("../graphycs/sonic/sonic_d.png"); transform: rotate(360deg); bottom: -240px;}
 }
 
 @keyframes sonicRunning{
@@ -23,7 +34,8 @@
 
 @keyframes sonicFisiJum{
 	0% {width: 100px;}
-	10% {height: 100px; width: 70px; bottom: 150px; left: 60px;}
-	90% {width: 90px; bottom: 120px; left: 60px;}
-	100% {width: 100px; bottom: 20px; left: 40px;}
+	5% {height: 100px; width: 60px; bottom: 180px; left: 60px;}
+	10% {height: 80px; width: 80px; bottom: 180px; left: 60px;}
+	93% {height: 80px; width: 80px; bottom: 160px; left: 60px;}
+	100% {width: 80px; bottom: 20px; left: 40px;}
 }

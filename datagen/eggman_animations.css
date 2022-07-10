@@ -1,6 +1,7 @@
-img#spikes{
+img#spike{
 	position: absolute;
-	bottom: 20px;
+	width: 35px;
+	bottom: 40px;
 	animation: spikesAnimation linear 4s infinite;
 }
 

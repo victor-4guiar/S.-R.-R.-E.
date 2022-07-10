@@ -18,19 +18,14 @@ header{
 
 div#gameWindow{
 	background-color: black;
-	margin: 40px auto 0px 22%;
-	width: 750px;
+	margin: 40px auto auto auto;
+	min-width: 400px;
+	max-width: 750px;
 	min-height: 400px;
 	color: white;
 	border-radius: 10px;
 	position: relative;
 	overflow: hidden;
-}
-
-div#gameFlash{
-	background-color: black;
-	min-height: 400px;
-	border-radius: 10px;
 }
 
 img#logoIm{
