@@ -1,6 +1,7 @@
-let yatoco = {intro: false, title: false, level: false};
+let yatoco = {intro: false, title: false, level: false}; /* As variáveis do absoluto escopo novamente são declaradas aqui pois há conflito declarando dentro das funções. */
 let jump = new Audio('sounds/sfx/jump.ogg');
 let ostLe = new Audio('sounds/ost/gameover.ogg');
+let controle = true;
 
 let sonic = {
 	sprite: 'graphycs/sonic/sonic_r0.png',
@@ -54,12 +55,10 @@ function titleScreen(){
 };
 
 function gamePlay(){
-	let pod = true;
 	let eleSo = document.createElement('img');
 	eleSo.src = sonic.sprite;
 	eleSo.setAttribute('class', 'sonic');
 	eleSo.style.imageRendering = 'pixelated';
-	let controle = true
 	
 	if (yatoco.level == false){
 		yatoco.level = true;
