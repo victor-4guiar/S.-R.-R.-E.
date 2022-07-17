@@ -55,6 +55,7 @@ function gamePlay(){
 		llave = false;
 		let jump = new Audio('sounds/sfx/jump.ogg');
 		let ostLe = new Audio('sounds/ost/gameover.ogg');
+		let fas = new Audio('sounds/ost/loop.ogg');
 		let controle = true;
 		let eleSo = document.createElement('img');
 		
@@ -72,6 +73,7 @@ function gamePlay(){
 		gameWindow.appendChild(spikes);
 		gameWindow.appendChild(eleSo);
 		yatoco.level = true;
+		fas.play();
 		
 		if (llave == false){
 			document.addEventListener('keydown', function(verifi){
@@ -103,6 +105,7 @@ function gamePlay(){
 					eleSo.style.bottom = `${sonicPosition}px`;
 					llave = true;
 					controle = false;
+					fas.pause();
 					gameOver();
 				};
 			}, 10);
