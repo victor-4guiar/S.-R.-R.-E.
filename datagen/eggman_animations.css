@@ -2,7 +2,18 @@ img#spike{
 	position: absolute;
 	width: 35px;
 	bottom: 40px;
+}
+
+.spikemov{
 	animation: spikesAnimation linear 4s infinite;
+}
+
+.tirspiop{
+	animation: 4100ms tirar linear;
+}
+
+@keyframes tirar{
+	from{width: opacity: 100%;}to{opacity: 0%;}
 }
 
 @keyframes spikesAnimation{

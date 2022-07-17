@@ -67,6 +67,7 @@ function gamePlay(){
 		spikes.setAttribute('id', 'spike');
 		spikes.src = 'graphycs/spike.png';
 		spikes.style.imageRendering = 'pixelated';
+		spikes.classList.add('spikemov');
 			
 		gameWindow.appendChild(spikes);
 		gameWindow.appendChild(eleSo);
@@ -90,11 +91,11 @@ function gamePlay(){
 			});
 			
 			const loop = setInterval(()=>{
-				const spikePosition = spike.offsetLeft;
+				const spikePosition = spikes.offsetLeft;
 				const sonicPosition = +window.getComputedStyle(eleSo).bottom.replace('px', '');
 				if (spikePosition <= 120 && spikePosition > 0 && sonicPosition < 90){
-					spike.style.animation = 'none';
-					spike.style.left = `${spikePosition}px`;
+					spikes.classList.remove('spikemov');
+					spikes.style.left = `${spikePosition}px`;
 								
 					eleSo.classList.remove('jumpFisi');
 					eleSo.classList.remove('jumpAnim');
@@ -113,11 +114,28 @@ function gameOver(){
 	if(yatoco.over == false){
 		let gameO = new Audio('sounds/ost/gameover.ogg');
 		let dano = new Audio('sounds/sfx/die.ogg');
+		let spike = document.getElementById('spike');
+		
+		let gameOverMsg = document.createElement('h1');
+		gameOverMsg.setAttribute('id', 'gameOverMsg');
+		
 		dano.play();
 		yatoco.over = true;
 		setTimeout(()=>{
+			gameWindow.classList.add('bluetoblack');
 			gameO.play();
+			spike.classList.add('tirspiop');
 			dano.pause();
-		}, 3 * 1000);
+			gameWindow.appendChild(gameOverMsg);
+			gameOverMsg.innerHTML = 'Game Over';
+			gameOverMsg.classList.add('opaciUp');
+			setTimeout(()=>{
+				gameWindow.classList.remove('bluetoblack');
+				gameWindow.classList.remove('whiteDown');
+				gameWindow.style.backgroundColor = 'black';
+				gameOverMsg.style.opacity = '100%';
+				spike.remove();
+			}, 4 * 1010);
+		}, 4 * 1000);
 	};
 };
