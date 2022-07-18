@@ -28,6 +28,25 @@ div#gameWindow{
 	overflow: hidden;
 }
 
+img#TitleSprite{
+	width: 333px;
+	display: flex;
+	text-align: center;
+	position: relative;
+	left: 200px;
+	top: 50px;
+	image-rendering: pixelated;
+	opacity: 0%;
+}
+
+h2#msgTit{
+	color: yellow;
+	text-align: center;
+	position: fixed;
+	margin: 80px 0px 50px 250px;
+	opacity: 0%;
+}
+
 img#logoIm{
 	width: 450px;
 	text-align: center;

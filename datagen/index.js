@@ -1,4 +1,5 @@
 let yatoco = {intro: false, title: false, level: false, over: false};
+
 let sonic = {
 	sprite: 'graphycs/sonic/sonic_r0.png',
 	runFrames: 4,
@@ -33,20 +34,34 @@ function titleScreen(){
 		let title = new Audio('sounds/ost/title.ogg');
 		title.play();
 		let verifiTecl = true
+		
 		let messageTitle = document.createElement('h2');
-		messageTitle.style.color = 'yellow';
-		messageTitle.style.textAlign = 'center';
+		messageTitle.setAttribute('id', 'msgTit');
 		messageTitle.innerHTML = 'Press any key to play!';
-		messageTitle.style.position = 'absolute';
-		messageTitle.style.margin = '100px 100px 50px 250px';
+		
+		let imageTitle = document.createElement('img');
+		imageTitle.src = './graphycs/title.png';
+		imageTitle.setAttribute('id','TitleSprite');
+		
+		imageTitle.classList.add('opaciUp');
+		messageTitle.classList.add('opaciUp');
+		gameWindow.appendChild(imageTitle);
 		gameWindow.appendChild(messageTitle);
-		document.addEventListener('keyup', function(event){
-			if (event.keyCode != "undefined"){
-				messageTitle.remove();
-				gamePlay();
-				title.pause();
-			}
-		});
+		setTimeout(()=>{
+			messageTitle.classList.remove('opaciUp');
+			imageTitle.classList.remove('opaciUp');
+			messageTitle.style.opacity = '100%';
+			imageTitle.style.opacity = '100%';
+			
+			document.addEventListener('keyup', function(event){
+				if (event.keyCode != "undefined"){
+					messageTitle.remove();
+					imageTitle.remove();
+					gamePlay();
+					title.pause();
+				}
+			});
+		}, 4 * 1000);
 	};
 };
 
@@ -105,6 +120,9 @@ function gamePlay(){
 					eleSo.style.bottom = `${sonicPosition}px`;
 					llave = true;
 					controle = false;
+					setTimeout(()=>{
+						eleSo.remove();
+					}, 1500);
 					fas.pause();
 					gameOver();
 				};
@@ -124,6 +142,7 @@ function gameOver(){
 		
 		dano.play();
 		yatoco.over = true;
+		
 		setTimeout(()=>{
 			gameWindow.classList.add('bluetoblack');
 			gameO.play();
