@@ -68,6 +68,10 @@ function titleScreen(){
 function gamePlay(){
 	if (yatoco.level == false){
 		llave = false;
+		
+		gameWindow.style.backgroundImage = "url('graphycs/parallax/parallax_0.png')";
+		gameWindow.classList.add('moverback');
+		
 		let jump = new Audio('sounds/sfx/jump.ogg');
 		let ostLe = new Audio('sounds/ost/gameover.ogg');
 		let fas = new Audio('sounds/ost/loop.ogg');
