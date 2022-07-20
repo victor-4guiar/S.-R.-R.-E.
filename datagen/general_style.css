@@ -28,21 +28,34 @@ div#gameWindow{
 	overflow: hidden;
 }
 
+/*
+	configurações da imagem*
+	width = ({largura da imagem} * 4 / 3) - {Resultado da divisão} 
+
+	animações*
+	0% = right: {resultado da divisão}
+	100% = right: 0px
+	
+	se o parallax ficar muito grande, podes adicionar 
+	mais uma vez parte do parallax(no caso a largura) 
+	em um editor de imagem.
+*/
+
 img.backgroundUno{
 	display: flex;
 	position: absolute;
-	width: 2048px;
+	width: 3072px;
 	min-height: 400px;
 }
 
 .moverback{
-	Image-rendering: pixelated;
-	animation: 8s moverelba linear infinite;
+	image-rendering: pixelated;
+	animation: 12s moverelba linear infinite;
 }
 
 @keyframes moverelba{
 	0%{right: -1024px;}
-	100%{right: 1024px;}
+	100%{right: 0px;}
 }
 
 img#TitleSprite{
