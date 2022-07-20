@@ -26,17 +26,23 @@ div#gameWindow{
 	border-radius: 10px;
 	position: relative;
 	overflow: hidden;
-	background-repeat: repeat no-repeat;
-	background-size: cover;
+}
+
+img.backgroundUno{
+	display: flex;
+	position: absolute;
+	width: 2048px;
+	min-height: 400px;
 }
 
 .moverback{
 	Image-rendering: pixelated;
-	animation: moverelba 4s linear;
+	animation: 8s moverelba linear infinite;
 }
 
 @keyframes moverelba{
-	from{background-position: left;}to{background-position: right;}
+	0%{right: -1024px;}
+	100%{right: 1024px;}
 }
 
 img#TitleSprite{

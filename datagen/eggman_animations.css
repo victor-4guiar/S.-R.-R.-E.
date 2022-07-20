@@ -2,6 +2,7 @@ img#spike{
 	position: absolute;
 	width: 35px;
 	bottom: 40px;
+	display: flex;
 }
 
 .spikemov{

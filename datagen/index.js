@@ -69,8 +69,10 @@ function gamePlay(){
 	if (yatoco.level == false){
 		llave = false;
 		
-		gameWindow.style.backgroundImage = "url('graphycs/parallax/parallax_0.png')";
-		gameWindow.classList.add('moverback');
+		let backgroundUno = document.createElement('img');
+		backgroundUno.setAttribute('class', 'backgroundUno');
+		backgroundUno.src = 'graphycs/parallax/parallax_0.png';
+		backgroundUno.classList.add('moverback');
 		
 		let jump = new Audio('sounds/sfx/jump.ogg');
 		let ostLe = new Audio('sounds/ost/gameover.ogg');
@@ -89,6 +91,7 @@ function gamePlay(){
 		spikes.style.imageRendering = 'pixelated';
 		spikes.classList.add('spikemov');
 			
+		gameWindow.appendChild(backgroundUno);
 		gameWindow.appendChild(spikes);
 		gameWindow.appendChild(eleSo);
 		yatoco.level = true;

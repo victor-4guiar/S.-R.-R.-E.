@@ -4,6 +4,7 @@
 	bottom: 40px;
 	left: 40px;
 	animation: sonicRunning 220ms linear infinite;
+	display: flex;
 }
 
 .die{
