@@ -76,7 +76,9 @@ function gamePlay(){
 		
 		let jump = new Audio('sounds/sfx/jump.ogg');
 		let ostLe = new Audio('sounds/ost/gameover.ogg');
-		let fas = new Audio('sounds/ost/loop.ogg');
+		let intr = new Audio('sounds/ost/level_0.ogg');
+		let fas = new Audio('sounds/ost/level_1.ogg');
+		fas.loop = true;
 		let controle = true;
 		let eleSo = document.createElement('img');
 		
@@ -95,7 +97,11 @@ function gamePlay(){
 		gameWindow.appendChild(spikes);
 		gameWindow.appendChild(eleSo);
 		yatoco.level = true;
-		fas.play();
+		intr.play();
+		setTimeout(()=>{
+			intr.pause();
+			fas.play();
+		}, 3.8 * 1000);
 		
 		if (llave == false){
 			document.addEventListener('keydown', function(verifi){
@@ -165,6 +171,6 @@ function gameOver(){
 				gameOverMsg.style.opacity = '100%';
 				spike.remove();
 			}, 4 * 1010);
-		}, 4 * 1000);
+		}, 3 * 1000);
 	};
 };
