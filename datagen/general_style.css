@@ -41,15 +41,15 @@ div#gameWindow{
 	em um editor de imagem.
 */
 
-img.backgroundUno{
+img#backgroundUno{
 	display: flex;
 	position: absolute;
 	width: 3072px;
+	image-rendering: pixelated;
 	min-height: 400px;
 }
 
 .moverback{
-	image-rendering: pixelated;
 	animation: 12s moverelba linear infinite;
 }
 
@@ -86,7 +86,7 @@ img#logoIm{
 
 h1#gameOverMsg{
 	opacity: 0%;
-	font-size: 3em;
+	font-size: 4em;
 	text-align: center;
 	margin-top: 150px;
 }
@@ -132,12 +132,12 @@ footer a:hover {
 	animation-duration: 8s;
 }
 
-.bluetoblack{
+.opacityOff{
 	animation: 4100ms bluetoBlack linear;
 }
 
 @keyframes bluetoBlack{
-	from{background-color: lightblue;} to {background-color: black;}
+	from{opacity: 100%;} to {opacity: 0%;}
 }
 
 @keyframes adicionarWhite{

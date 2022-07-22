@@ -2,9 +2,6 @@ let yatoco = {intro: false, title: false, level: false, over: false};
 
 let sonic = {
 	sprite: 'graphycs/sonic/sonic_r0.png',
-	runFrames: 4,
-	jumpFrames: 5,
-	stepVelocity: 1
 };
 
 function introGame(){
@@ -33,7 +30,7 @@ function titleScreen(){
 		yatoco.title = true;
 		let title = new Audio('sounds/ost/title.ogg');
 		title.play();
-		let verifiTecl = true
+		let verifiTecl = true;
 		
 		let messageTitle = document.createElement('h2');
 		messageTitle.setAttribute('id', 'msgTit');
@@ -70,7 +67,7 @@ function gamePlay(){
 		llave = false;
 		
 		let backgroundUno = document.createElement('img');
-		backgroundUno.setAttribute('class', 'backgroundUno');
+		backgroundUno.setAttribute('id', 'backgroundUno');
 		backgroundUno.src = 'graphycs/parallax/parallax_0.png';
 		backgroundUno.classList.add('moverback');
 		
@@ -86,7 +83,6 @@ function gamePlay(){
 		eleSo.setAttribute('class', 'sonic');
 		eleSo.style.imageRendering = 'pixelated';
 		
-		gameWindow.style.backgroundColor = 'lightblue';
 		let spikes = document.createElement('img');
 		spikes.setAttribute('id', 'spike');
 		spikes.src = 'graphycs/spike.png';
@@ -101,7 +97,7 @@ function gamePlay(){
 		setTimeout(()=>{
 			intr.pause();
 			fas.play();
-		}, 3.8 * 1000);
+		}, 3.81 * 1000);
 		
 		if (llave == false){
 			document.addEventListener('keydown', function(verifi){
@@ -123,10 +119,12 @@ function gamePlay(){
 			const loop = setInterval(()=>{
 				const spikePosition = spikes.offsetLeft;
 				const sonicPosition = +window.getComputedStyle(eleSo).bottom.replace('px', '');
+				const backgroundPosition = +window.getComputedStyle(backgroundUno).right.replace('px', '');
 				if (spikePosition <= 120 && spikePosition > 0 && sonicPosition < 90){
 					spikes.classList.remove('spikemov');
 					spikes.style.left = `${spikePosition}px`;
-								
+					backgroundUno.classList.remove('moverback');
+					backgroundUno.style.right = `${backgroundPosition}px`;
 					eleSo.classList.remove('jumpFisi');
 					eleSo.classList.remove('jumpAnim');
 					eleSo.classList.add('die');
@@ -146,6 +144,7 @@ function gamePlay(){
 
 function gameOver(){
 	if(yatoco.over == false){
+		let backgroundUno = document.getElementById('backgroundUno');
 		let gameO = new Audio('sounds/ost/gameover.ogg');
 		let dano = new Audio('sounds/sfx/die.ogg');
 		let spike = document.getElementById('spike');
@@ -157,17 +156,19 @@ function gameOver(){
 		yatoco.over = true;
 		
 		setTimeout(()=>{
-			gameWindow.classList.add('bluetoblack');
+			backgroundUno.classList.add('opacityOff');
 			gameO.play();
 			spike.classList.add('tirspiop');
 			dano.pause();
 			gameWindow.appendChild(gameOverMsg);
 			gameOverMsg.innerHTML = 'Game Over';
+			gameOverMsg.style.color = 'black';
+			gameOverMsg.style.webkitTextStroke = '2px white';
 			gameOverMsg.classList.add('opaciUp');
 			setTimeout(()=>{
-				gameWindow.classList.remove('bluetoblack');
+				gameWindow.classList.remove('opacityOff');
 				gameWindow.classList.remove('whiteDown');
-				gameWindow.style.backgroundColor = 'black';
+				backgroundUno.remove();
 				gameOverMsg.style.opacity = '100%';
 				spike.remove();
 			}, 4 * 1010);
