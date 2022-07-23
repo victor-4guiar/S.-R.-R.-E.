@@ -1,7 +1,12 @@
-Sonic Run Red Edition
-
-<img src="https://media.discordapp.net/attachments/918659534338269224/995140933861523476/sonic-sonic-waiting.gif?width=200&height=200" alt="Sonic Waiting">
-
-Hello! I am <strong>Victor Aguiar</strong>, a junior programmer who is making this "Sonic Fangame", in reality it is just a mini-project for training.
-
-For now there's not much to say about it, but there'll be when there's a new update. But anyway, thanks for reading this and I hope you like the next update!
+<h1>Attention</h1>
+<p>This project has been canceled due to the final result, a mere run game, not being worth the effort put into it.</p>
+<p>If you use my work in any other project, please give proper credits.</p>
+<h2>Credits</h2>
+<h3>Emerald Hill Tiles Pack</h3>
+<p>Sonicdash57</p>
+<h3>Sonic CD Sprites Pack</h3>
+<p>Kekun</p>
+<h3>SFX</h3>
+<p>Sonic CD Sound Effects</p>
+<h3>Code & OST</h3>
+<p>Rozavick(Victor Aguiar)</p>
